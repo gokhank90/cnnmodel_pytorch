@@ -2,17 +2,33 @@
 Öncelikle projemizi çalıştırmak için interpreter ayarı yapmalıyız. Bunun için de 
 Dockerfile'ımızı build etmeliyiz. 
 ```dockerfile
-docker build -t gokhan/pytorch:1.0 -f /home/gkhnkrhmt/Desktop/docker/Dockerfile .
+docker build -t mnist:pytorch -f /home/gkhnkrhmt/Desktop/docker/Dockerfile .
 ```
 komutu ile Dockerfile build oluyor.Build ettiğimiz Dockerfile artık local makinemizde
 bir Image haline geliyor . Geriye Image'ı run komutu ile çalıştırıp Container haline getirmek
 kalıyor . 
 ```dockerfile
-docker run <image ID> 
+docker run -it -v `pwd`:/workspace mnist:pytorch 
 ```
 komutu ile Container haline gelmiş oluyor . Projemizde artık "interpreter" olarak Docker sekmesinden
 Dockerfile için verdiğimiz tag'i seçerek değişiklikleri onaylıyoruz. Böylece projemiz çalışmaya ,debug
 edilmeye hazır . 
+
+# Training
+```
+python train.py
+```
+
+# Test
+
+```
+python test.py
+```
+
+# TODO
+
+- [ ] Split test and training code. 
+- [ ] Write all the terminal commands. How to run codes ??
 
 #Kod Anlatımı
 Terminalden ;
